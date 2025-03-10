@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -33,7 +33,7 @@ jobs:
           chmod 600 private_key.pem
           
           # Git-Pull direkt auf dem Server ausführen
-          ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-107-22-154-77.compute-1.amazonaws.com << 'EOF'
+          ssh -i private_key.pem -o StrictHostKeyChecking=no ubuntu@ec2-107-22-154-77.compute-1.amazonaws.com << 'EOF'
             cd ~/M210
             git reset --hard  # Falls es Änderungen gibt
             git pull origin main
